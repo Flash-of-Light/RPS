@@ -14,11 +14,24 @@ def compThrow():
 compThrow()
 
 def yourThrow():
-    input("What do you choose? Type rock, paper, or scissors.")
+    yourThrow.yourChoice = input("What do you choose? Type rock, paper, or scissors.")
 
 yourThrow()
 
 def whoWins():
-    if compThrow.x == 1 and yourThrow.input == str("rock")
+    # print(compThrow.x)
+    print(yourThrow.yourChoice)
+    if compThrow.x == 1 and yourThrow.yourChoice == str("rock"):
         print("Both rock. Tie")
+    elif compThrow.x == 2 and yourThrow.yourChoice == str("scissors"):
+        print("Both scissors. Tie")
+    elif compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
+        print("Both scissors. Tie")
+    elif compThrow.x == 1 and yourThrow.yourChoice == str("paper") 
+        or compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
+        print("You win. You chose " + yourThrow.yourChoice + "and it chose rock.")
+    # elif compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
+    #     print("Both scissors. Tie")
+    # elif compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
+    #     print("Both scissors. Tie")
 whoWins()
