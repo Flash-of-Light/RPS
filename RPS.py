@@ -2,36 +2,48 @@
 
 import random as rand
 
+win = 0
+loss = 0
+tie = 0
 def compThrow():
     compThrow.x = rand.randint(1,3)
     if compThrow.x == 1:
-        print("computer throws rock")
+        compThrow.x = "rock"
+        # print("computer throws rock")
     elif compThrow.x == 2:
-        print("computer throws scissors")
+        compThrow.x = "scissors"
+        # print("computer throws scissors")
     elif compThrow.x == 3:
-        print("computer throws paper")
-
+        compThrow.x = "paper"
+        # print("computer throws paper")
 compThrow()
 
 def yourThrow():
     yourThrow.yourChoice = input("What do you choose? Type rock, paper, or scissors.")
-
 yourThrow()
 
+def playAgain():
+    compThrow()
+    yourThrow()
+    whoWins()
+
 def whoWins():
-    # print(compThrow.x)
-    print(yourThrow.yourChoice)
-    if compThrow.x == 1 and yourThrow.yourChoice == str("rock"):
-        print("Both rock. Tie")
-    elif compThrow.x == 2 and yourThrow.yourChoice == str("scissors"):
-        print("Both scissors. Tie")
-    elif compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
-        print("Both scissors. Tie")
-    elif compThrow.x == 1 and yourThrow.yourChoice == str("paper") 
-        or compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
-        print("You win. You chose " + yourThrow.yourChoice + "and it chose rock.")
-    # elif compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
-    #     print("Both scissors. Tie")
-    # elif compThrow.x == 3 and yourThrow.yourChoice == str("paper"):
-    #     print("Both scissors. Tie")
+    global tie
+    global win
+    global loss
+    if compThrow.x == yourThrow.yourChoice:
+        tie += 1
+        print("Both chose " + compThrow.x + ". Tie! Wins: " + str(win) + " Losses: " + str(loss) + " Ties: " + str(tie))
+        print("New game.")
+        playAgain()
+    elif compThrow.x == "rock" and yourThrow.yourChoice == str("paper") or compThrow.x == "paper" and yourThrow.yourChoice == str("scissors") or compThrow.x == "scissors" and yourThrow.yourChoice == str("rock"):
+        win +=1
+        print("You chose " + yourThrow.yourChoice + " and it chose " + compThrow.x + ". Victory! Wins: " + str(win) + " Losses: " + str(loss) + " Ties: " + str(tie))
+        print("New game.")
+        playAgain()
+    elif compThrow.x == "rock" and yourThrow.yourChoice == str("scissors") or compThrow.x == "paper" and yourThrow.yourChoice == str("rock") or compThrow.x == "scissors" and yourThrow.yourChoice == str("paper"):
+        loss +=1
+        print("You chose " + yourThrow.yourChoice + " and it chose " + compThrow.x + ". Defeat! Wins: " + str(win) + " Losses: " + str(loss) + " Ties: " + str(tie))
+        print("New game.")
+        playAgain()
 whoWins()
